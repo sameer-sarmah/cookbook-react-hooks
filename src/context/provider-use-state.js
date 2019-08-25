@@ -17,15 +17,16 @@ const  recipeService=new RecipeService();
 
 export const Provider = (props)=> {
 
-  
+
+
+    const [shoppingState, setShoppingState ] = useState(initialShoppingState);
+    const [cartState, setCartState] = useState(initialCartState);
+
     useEffect(() => {
         const recipes= recipeService.getRecipes();
         const selectedRecipe=recipes[0];
         setShoppingState({...shoppingState,selectedRecipe,recipes});
     },[]);
-
-    const [shoppingState, setShoppingState ] = useState(initialShoppingState);
-    const [cartState, setCartState] = useState(initialCartState);
     
     const addToCart =() => {
         if(!!shoppingState.selectedRecipe){
